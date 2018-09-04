@@ -66,3 +66,44 @@ for (var i = 0; i < inducedErrorBlocks.length; i++) {
 ```
 blockchain.validateChain();
 ```
+
+## Web API
+
+The blockchain can now be interacted with via our web API. Here, the user will be able to request block object data from the chain by providing a block height (number) and post there own data to the chain by adding it to a new block.
+
+Initialize and run the server:
+
+```
+node asyncChain.js
+```
+
+There are two ways of interacting with/testing the web API.
+
+#### 1) navigate to http://localhost:8000
+
+Here the user will be able to query block data by navigating to http://localhost:8000/block/[height], replacing [height] with an actual block height (integer/number). Note that when running the chain for the first time, only the genesis block will be generated. E.g.:
+
+```
+http://localhost:8000/block/4
+```
+
+Also, the user can add a block with their own data to the chain (and have the object be returned) by navigating to http://localhost:8000/block/add/ and entering the custom block data before submitting the form.
+
+
+#### 2) Using a software like Postman or a CURL
+
+Baseurl: http://localhost:8000
+
+- GET request (replacing [height] with an actual block height (integer/numer))
+/block/[height]. E.g.:
+
+```
+curl http://localhost:8000/block/0
+
+```
+
+- POST (adding a string to the '_data' parameter/key that the user wants added to the block.)
+
+```
+curl -X "POST" "http://localhost:8000/block/adding" -H 'Content-Type: application/json' -d $'{"_data":"Custom data to be added to the chain."}'
+```

@@ -34,7 +34,7 @@ app.listen(8000, () => {
 })
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({extended: false}));
+// app.use(bodyParser.urlencoded({extended: false}));
 
 // Setting the views folder to call files from
 app.set('view engine', 'ejs');
@@ -74,7 +74,7 @@ app.post('/block/adding/', async (req, res) => {
   if (req.body._data === '' || req.body._data === undefined) {
     res.status(400).json({
       "status": 400,
-      message: "Fill the data parameter"
+      message: "Fill the body parameter"
     })
   }
 
