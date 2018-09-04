@@ -1,0 +1,32 @@
+<html>
+<head>
+<title>Add a new block to the blockchain | Udacity ND</title>
+<style>
+body {
+	background-image: linear-gradient(to bottom right, #1C0F0F, #3D3232);
+	color: #fcfcfc;
+}
+.navigation a {
+	margin-right: 30px;
+	font-weight: 600;
+}
+
+a {
+	color: #CA4BD8;
+	text-decoration: none;
+}
+</style>
+</head>
+<body>
+	<div class="container" style="padding: 50px 100px; font-family: Calibri;">
+		<div class="navigation"><a href="/">HOME</a><a href="/block/add/">ADD BLOCK</a><a href="/block/">GET BLOCK</a></div>
+		<h1 style="margin-top: 100px; font-size: 3.1rem; font-weight: 400;">Add a new block to the blockchain | Udacity ND</h1>
+		<p style="font-size: 1.4rem;">Below you can add a new block to the blockchain that stores some data.</p><br><br>
+		<form method="POST" action="/block/adding/">
+			<h4>What data would you like to add?</h4>
+			<textarea style="padding: 5px 10px; display: block; margin-bottom: 20px;" type="textarea" name="_data" placeholder="Data input that will be stored in the block." maxlength="300" rows="5" cols="70" required></textarea>
+			<input style="background-color: blue; padding: 10px 20px; color: #fff; font-weight: 600; border: none; font-size: 1.1rem; border-radius: 2px;" type="submit" name="Submit">
+		</form>
+	</div>
+</body>
+</html>

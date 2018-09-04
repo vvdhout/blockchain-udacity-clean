@@ -39,9 +39,9 @@ class Blockchain {
 			newBlock.previousBlockHash = previousBlock.hash;
 		}
 		newBlock.height = chainHeight + 1; 
-		newBlock.time = new Date().setTime().toString().slice(-1,3);
+		newBlock.time = new Date().getTime().toString().slice(0,-3);
 		newBlock.hash = SHA256(JSON.stringify(newBlock)).toString();
-		this.addBlockToDB(newBlock.height, newBlock);
+		return this.addBlockToDB(newBlock.height, newBlock);
 	}
 
 
@@ -52,6 +52,12 @@ class Blockchain {
 
 	async getBlock(height) {
 		return await this.getBlockFromDB(height);
+	}
+
+	async deleteBlock(height) {
+		db.del(height).then(() => {
+			console.log(`Deleted block #${height}.`);
+		})
 	}
 
 	async validateBlock(height) {
@@ -109,7 +115,7 @@ class Blockchain {
 				}
 				else {
 					console.log(`Added block #${key} to the blockchain.`)
-					resolve(`Added block #${key} to the blockchain.`)
+					resolve(true);
 				}
 			})
 		})
@@ -120,7 +126,8 @@ class Blockchain {
 		return new Promise((resolve,reject) => {
 			db.get(key, function(err, value) {
 				if(err) {
-					reject('WARNING: An error occured when trying to get block data from levelDB.')
+					console.log('WARNING: An error occured when trying to get block data from levelDB.');
+					reject(err);
 				}
 				else {
 					resolve(value);
