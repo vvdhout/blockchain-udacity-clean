@@ -34,7 +34,8 @@ app.listen(8000, () => {
 })
 
 app.use(bodyParser.json());
-// app.use(bodyParser.urlencoded({extended: false}));
+
+app.use(bodyParser.urlencoded({extended: false}));
 
 // Setting the views folder to call files from
 app.set('view engine', 'ejs');
@@ -77,15 +78,14 @@ app.post('/block/adding/', async (req, res) => {
       message: "Fill the body parameter"
     })
   }
-
-  let success = await chain.addBlock(new Block(req.body._data))
-  if(success) {
-  	const height = await chain.getHeight()
-	const response = await chain.getBlock(height)
-
-	res.send(response)
-  }
   else {
-  	res.send('We were not able to add the block before requesting the return...')
+  	  let success = await chain.addBlock(new Block(req.body._data))
+	  if(success) {
+		res.send(success)
+	  }
+	  else {
+	  	res.send('We were not able to add the block before requesting the return...')
+	  }
   }
 })
+

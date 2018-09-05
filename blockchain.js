@@ -41,7 +41,8 @@ class Blockchain {
 		newBlock.height = chainHeight + 1; 
 		newBlock.time = new Date().getTime().toString().slice(0,-3);
 		newBlock.hash = SHA256(JSON.stringify(newBlock)).toString();
-		return this.addBlockToDB(newBlock.height, newBlock);
+		await this.addBlockToDB(newBlock.height, newBlock);
+		return Promise.resolve(newBlock);
 	}
 
 
