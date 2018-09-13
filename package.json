@@ -1,19 +1,29 @@
 {
-  "name": "asyncchain",
+  "name": "starchain",
   "version": "1.0.0",
   "description": "In this folder you will find all the files and modules needed to initialize and operate the private blockchain that I have build during the Udacity Nanodegree. We started by creating a blockchain that did not persist its data, just to build out some functionality. After this, we integrated levelDB into the system in order to save and persist the chain of data. Lastly, we built a Web API to communicate with the chain, allowing interaction by means of requesting block data and adding data in a block to the chain. This functionality will be elaborated on below.",
-  "main": "asyncChain.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "author": "",
-  "license": "ISC",
+  "main": "starChain.js",
   "dependencies": {
+    "bitcoinjs-message": "^2.0.0",
     "body-parser": "^1.18.3",
     "crypto-js": "^3.1.9-1",
     "ejs": "^2.6.1",
     "express": "^4.16.3",
     "level": "^4.0.0",
     "path": "^0.12.7"
-  }
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vvdhout/udacity-blockchain-starRegistry.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vvdhout/udacity-blockchain-starRegistry/issues"
+  },
+  "homepage": "https://github.com/vvdhout/udacity-blockchain-starRegistry#readme"
 }
